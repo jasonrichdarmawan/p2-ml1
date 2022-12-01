@@ -11,6 +11,6 @@ from sklearn.feature_selection import mutual_info_classif
 def sel_score(X, y):
     return mutual_info_classif(
         X=X, y=y, 
-        discrete_features=[False, False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True],
+        discrete_features=[False, False, False, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True, True],
         random_state=0
     )
