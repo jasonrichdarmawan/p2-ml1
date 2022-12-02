@@ -29,8 +29,12 @@ def predict():
     
     customerID = args.get('customerID')
     
+    fetch_customer_data = args.get('fetch_customer_data')
+    
+    print("hello")
+    
     # guard clause
-    if customerID == None or type(customerID) != list:
+    if type(customerID) != list:
         return "Bad Request", 400
     
     data = db.loc[db['customerID'].isin(customerID)]
@@ -41,10 +45,13 @@ def predict():
     
     y_pred = np.where(y_pred_proba >= 0.3, 'Yes', 'No')
     
-    return jsonify(
-        Churn = y_pred.reshape(-1,).tolist(),
-        customerID = customerID
-    )
+    data['Churn'] = y_pred
+    
+    # guard clause
+    if fetch_customer_data == True:
+        return data.to_json()
+    else:
+        return data[['customerID', 'Churn']].to_json()
 
 # when the appy is deploy, the __name__ is app instead of __main__
 if __name__ == '__main__':
