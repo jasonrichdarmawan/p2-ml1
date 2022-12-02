@@ -11,7 +11,7 @@ else:
     URL = config['DEVELOPMENT']['URL']
 
 def fetch_all_data() -> pd.DataFrame:
-    r = requests.get(URL)
+    r = requests.get(URL+"/query")
     
     if r.status_code == 200:
         res = r.json()
