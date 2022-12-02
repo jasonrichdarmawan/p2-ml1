@@ -16,7 +16,7 @@ def run():
         The list is generated with this logic:
         1. We don't have the future data set (the ones without Churn column).
         2. So just imagine that the data set we are using is connected to the database. Thus, we use the latest data.
-        3. The back end fetch 10 sample and will predict whether a customer will churn or not.
+        3. The back end will fetch 10 sample (specific to the model strengths) and will predict whether a customer will churn or not.
         4. The back end will only return the list of customer that will churn.
         """
     )
