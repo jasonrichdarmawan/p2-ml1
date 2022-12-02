@@ -1,8 +1,16 @@
 import requests
 import pandas as pd
+from configparser import ConfigParser
+
+config = ConfigParser()
+config.read('./config.ini')
+
+if config['DEFAULT']['production'] == 'True':
+    URL = config['PRODUCTION']['URL']
+else:
+    URL = config['DEVELOPMENT']['URL']
 
 def fetch_all_data() -> pd.DataFrame:
-    URL = "http://127.0.0.1:5000/query"
     r = requests.get(URL)
     
     if r.status_code == 200:
