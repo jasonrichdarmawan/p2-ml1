@@ -18,3 +18,12 @@ def fetch_all_data() -> pd.DataFrame:
         return pd.DataFrame(res)
     else:
         return ('Error with status code ', str(r.status_code))
+    
+def proactive() -> pd.DataFrame:
+    r = requests.get(URL+"/proactive")
+    
+    if r.status_code == 200:
+        res = r.json()
+        return pd.DataFrame(res)
+    else:
+        return ('Error with status code ', str(r.status_code))
