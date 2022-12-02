@@ -1,9 +1,9 @@
 streamlit
-streamlit_toggle
+streamlit-toggle-switch
 
 pandas
 matplotlib
 seaborn
 
 # pillow is the package name for PIL
-pillow 
+pillow
