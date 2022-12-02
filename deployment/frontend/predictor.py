@@ -15,6 +15,8 @@ else:
     URL = config['DEVELOPMENT']['URL']
     
 def run():
+    st.title("TelkomselPredictor")
+    
     with st.form(key='predictor'):
         customerID = st.text_input(
             label="Customer IDs, separate it with a comma"
