@@ -2,9 +2,18 @@ import streamlit as st
 import requests
 import pandas as pd
 import streamlit_toggle as tog
+from configparser import ConfigParser
 
 str_to_array = lambda items: [item.strip("\" ") for item in items.split(',')]
 
+config = ConfigParser()
+config.read('./config.ini')
+
+if config['DEFAULT']['production'] == 'True':
+    URL = config['PRODUCTION']['URL']
+else:
+    URL = config['DEVELOPMENT']['URL']
+    
 def run():
     with st.form(key='predictor'):
         customerID = st.text_input(
@@ -20,9 +29,8 @@ def run():
             customerID_final = str_to_array(customerID)
             print("[DEBUG] customerID:", customerID_final)
             
-            URL = "http://127.0.0.1:5000/predict"
             r = requests.post(
-                URL, 
+                URL+"/predict", 
                 json={
                     "customerID": customerID_final,
                     "fetch_customer_data": fetch_customer_data

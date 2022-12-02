@@ -3,7 +3,7 @@ from keras.models import load_model
 from tensorflow_addons.metrics import F1Score
 import pandas as pd
 
-from flask import Flask, request, jsonify
+from flask import Flask, request
 import numpy as np
 
 # Load the sequential improved model

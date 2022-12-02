@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import seaborn as sns
-import requests
 import pandas as pd
 
 def __histplot(features, target, df):
