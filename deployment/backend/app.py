@@ -52,7 +52,14 @@ def predict():
         return data.to_json()
     else:
         return data[['customerID', 'Churn']].to_json()
-
+    
+@app.route('/query', methods=['GET'])
+def query():
+    """
+    simulation for Exploratory Data Analysis.
+    """
+    return db.to_json()
+    
 # when the appy is deploy, the __name__ is app instead of __main__
 if __name__ == '__main__':
     # host='0.0.0.0' to have have the server available externally as well.
